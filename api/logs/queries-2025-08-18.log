@@ -1,0 +1,1257 @@
+[2025-08-18 08:23:59][127.0.0.1] [summary-one] /province_metrics.php?province_id=21&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 21
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:23:59][127.0.0.1] [per-date] /province_metrics.php?province_id=21&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 21
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:26:53][127.0.0.1] [summary-one] /province_metrics.php?province_id=44&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 44
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:26:53][127.0.0.1] [per-date] /province_metrics.php?province_id=44&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 44
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:27:39][127.0.0.1] [summary-one] /province_metrics.php?province_id=41&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 41
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:27:39][127.0.0.1] [per-date] /province_metrics.php?province_id=41&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 41
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:27:43][127.0.0.1] [summary-one] /province_metrics.php?province_id=45&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 45
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:27:43][127.0.0.1] [per-date] /province_metrics.php?province_id=45&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 45
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:27:49][127.0.0.1] [summary-one] /province_metrics.php?province_id=31&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 31
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:27:49][127.0.0.1] [per-date] /province_metrics.php?province_id=31&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 31
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:28:47][127.0.0.1] [summary-one] /province_metrics.php?province_id=26&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 26
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:28:47][127.0.0.1] [per-date] /province_metrics.php?province_id=26&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 26
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:28:50][127.0.0.1] [summary-one] /province_metrics.php?province_id=84&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 84
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:28:50][127.0.0.1] [per-date] /province_metrics.php?province_id=84&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 84
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:34:13][127.0.0.1] [summary-one] /province_metrics.php?province_id=77&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 77
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:34:13][127.0.0.1] [per-date] /province_metrics.php?province_id=77&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 77
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:34:17][127.0.0.1] [summary-one] /province_metrics.php?province_id=38&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 38
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:34:17][127.0.0.1] [per-date] /province_metrics.php?province_id=38&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 38
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:34:20][127.0.0.1] [summary-one] /province_metrics.php?province_id=56&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 56
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:34:20][127.0.0.1] [per-date] /province_metrics.php?province_id=56&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 56
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:34:23][127.0.0.1] [summary-one] /province_metrics.php?province_id=55&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 55
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:34:23][127.0.0.1] [per-date] /province_metrics.php?province_id=55&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 55
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:34:26][127.0.0.1] [summary-one] /province_metrics.php?province_id=58&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 58
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:34:26][127.0.0.1] [per-date] /province_metrics.php?province_id=58&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 58
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:34:30][127.0.0.1] [summary-one] /province_metrics.php?province_id=61&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 61
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:34:30][127.0.0.1] [per-date] /province_metrics.php?province_id=61&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 61
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:34:35][127.0.0.1] [summary-one] /province_metrics.php?province_id=24&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 24
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:34:35][127.0.0.1] [per-date] /province_metrics.php?province_id=24&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 24
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:35:17][127.0.0.1] [summary-one] /province_metrics.php?province_id=23&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 23
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:35:17][127.0.0.1] [per-date] /province_metrics.php?province_id=23&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT
+            `id` AS record_id, `date` AS report_date,
+            SUM(`total_number`) AS `total_number`,
+        SUM(`number_resulted_operation`) AS `number_resulted_operation`,
+        SUM(`number_answered`) AS `number_answered`,
+        SUM(`number_unanswerd`) AS `number_unanswerd`,
+        SUM(`number_answered_operator`) AS `number_answered_operator`,
+        SUM(`number_failed`) AS `number_failed`,
+        SUM(`number_busy`) AS `number_busy`,
+        SUM(`other`) AS `other`,
+        SUM(`congestion`) AS `congestion`,
+        SUM(`operator-rendered_services`) AS `operator-rendered_services`,
+        SUM(`comments`) AS `comments`,
+        SUM(`duration_seconds`) AS `duration_seconds`,
+        SUM(`duration_answered_seconds`) AS `duration_answered_seconds`,
+        SUM(`countt_moz`) AS `countt_moz`,
+        SUM(`rightel`) AS `rightel`,
+        SUM(`irancell`) AS `irancell`,
+        SUM(`fixed`) AS `fixed`,
+        SUM(`unknown`) AS `unknown`,
+        SUM(`taliya`) AS `taliya`,
+        SUM(`espadan`) AS `espadan`,
+        SUM(`kish`) AS `kish`,
+        SUM(`mci`) AS `mci`,
+        SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`,
+        SUM(`anonymous_calls`) AS `anonymous_calls`,
+        SUM(`abandoned_calls`) AS `abandoned_calls`,
+        SUM(`total_wait_time`) AS `total_wait_time`,
+        AVG(`call_completion_rate`) AS `call_completion_rate`,
+        AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`,
+        AVG(`average_handle_time_aht`) AS `average_handle_time_aht`,
+        AVG(`service_level`) AS `service_level`,
+        AVG(`call_abandonment_rate`) AS `call_abandonment_rate`,
+        AVG(`answer_rate`) AS `answer_rate`,
+        AVG(`average_wait_time`) AS `average_wait_time`
+        FROM `daily_calls_provinces`
+        WHERE `code_ostan` = 23
+          AND `date` >= '1404/05/26'
+          AND `date` <= '1404/05/27'
+        GROUP BY `id`, `date`
+        ORDER BY `date` ASC;
+---
+[2025-08-18 08:39:42][127.0.0.1] [summary-one] /province_metrics.php?province_id=23&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT SUM(`total_number`) AS `total_number`, SUM(`number_resulted_operation`) AS `number_resulted_operation`, SUM(`number_answered`) AS `number_answered`, SUM(`number_unanswerd`) AS `number_unanswerd`, SUM(`number_answered_operator`) AS `number_answered_operator`, SUM(`number_failed`) AS `number_failed`, SUM(`number_busy`) AS `number_busy`, SUM(`other`) AS `other`, SUM(`congestion`) AS `congestion`, SUM(`operator-rendered_services`) AS `operator-rendered_services`, SUM(`comments`) AS `comments`, SUM(`duration_seconds`) AS `duration_seconds`, SUM(`duration_answered_seconds`) AS `duration_answered_seconds`, SUM(`countt_moz`) AS `countt_moz`, SUM(`rightel`) AS `rightel`, SUM(`irancell`) AS `irancell`, SUM(`fixed`) AS `fixed`, SUM(`unknown`) AS `unknown`, SUM(`taliya`) AS `taliya`, SUM(`espadan`) AS `espadan`, SUM(`kish`) AS `kish`, SUM(`mci`) AS `mci`, SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`, SUM(`anonymous_calls`) AS `anonymous_calls`, SUM(`abandoned_calls`) AS `abandoned_calls`, SUM(`total_wait_time`) AS `total_wait_time`, AVG(`call_completion_rate`) AS `call_completion_rate`, AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`, AVG(`average_handle_time_aht`) AS `average_handle_time_aht`, AVG(`service_level`) AS `service_level`, AVG(`call_abandonment_rate`) AS `call_abandonment_rate`, AVG(`answer_rate`) AS `answer_rate`, AVG(`average_wait_time`) AS `average_wait_time` FROM `daily_calls_provinces` WHERE `code_ostan` = 23 AND `date` >= '1404/05/26' AND `date` <= '1404/05/27';
+---
+[2025-08-18 08:39:42][127.0.0.1] [per-date] /province_metrics.php?province_id=23&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT `id` AS record_id, `date` AS report_date, SUM(`total_number`) AS `total_number`, SUM(`number_resulted_operation`) AS `number_resulted_operation`, SUM(`number_answered`) AS `number_answered`, SUM(`number_unanswerd`) AS `number_unanswerd`, SUM(`number_answered_operator`) AS `number_answered_operator`, SUM(`number_failed`) AS `number_failed`, SUM(`number_busy`) AS `number_busy`, SUM(`other`) AS `other`, SUM(`congestion`) AS `congestion`, SUM(`operator-rendered_services`) AS `operator-rendered_services`, SUM(`comments`) AS `comments`, SUM(`duration_seconds`) AS `duration_seconds`, SUM(`duration_answered_seconds`) AS `duration_answered_seconds`, SUM(`countt_moz`) AS `countt_moz`, SUM(`rightel`) AS `rightel`, SUM(`irancell`) AS `irancell`, SUM(`fixed`) AS `fixed`, SUM(`unknown`) AS `unknown`, SUM(`taliya`) AS `taliya`, SUM(`espadan`) AS `espadan`, SUM(`kish`) AS `kish`, SUM(`mci`) AS `mci`, SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`, SUM(`anonymous_calls`) AS `anonymous_calls`, SUM(`abandoned_calls`) AS `abandoned_calls`, SUM(`total_wait_time`) AS `total_wait_time`, AVG(`call_completion_rate`) AS `call_completion_rate`, AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`, AVG(`average_handle_time_aht`) AS `average_handle_time_aht`, AVG(`service_level`) AS `service_level`, AVG(`call_abandonment_rate`) AS `call_abandonment_rate`, AVG(`answer_rate`) AS `answer_rate`, AVG(`average_wait_time`) AS `average_wait_time` FROM `daily_calls_provinces` WHERE `code_ostan` = 23 AND `date` >= '1404/05/26' AND `date` <= '1404/05/27' GROUP BY `id`, `date` ORDER BY `date` ASC;
+---
+[2025-08-18 09:35:59][127.0.0.1] [summary-one] /province_metrics.php?province_id=45&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT SUM(`total_number`) AS `total_number`, SUM(`number_resulted_operation`) AS `number_resulted_operation`, SUM(`number_answered`) AS `number_answered`, SUM(`number_unanswerd`) AS `number_unanswerd`, SUM(`number_answered_operator`) AS `number_answered_operator`, SUM(`number_failed`) AS `number_failed`, SUM(`number_busy`) AS `number_busy`, SUM(`other`) AS `other`, SUM(`congestion`) AS `congestion`, SUM(`operator-rendered_services`) AS `operator-rendered_services`, SUM(`comments`) AS `comments`, SUM(`duration_seconds`) AS `duration_seconds`, SUM(`duration_answered_seconds`) AS `duration_answered_seconds`, SUM(`countt_moz`) AS `countt_moz`, SUM(`rightel`) AS `rightel`, SUM(`irancell`) AS `irancell`, SUM(`fixed`) AS `fixed`, SUM(`unknown`) AS `unknown`, SUM(`taliya`) AS `taliya`, SUM(`espadan`) AS `espadan`, SUM(`kish`) AS `kish`, SUM(`mci`) AS `mci`, SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`, SUM(`anonymous_calls`) AS `anonymous_calls`, SUM(`abandoned_calls`) AS `abandoned_calls`, SUM(`total_wait_time`) AS `total_wait_time`, AVG(`call_completion_rate`) AS `call_completion_rate`, AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`, AVG(`average_handle_time_aht`) AS `average_handle_time_aht`, AVG(`service_level`) AS `service_level`, AVG(`call_abandonment_rate`) AS `call_abandonment_rate`, AVG(`answer_rate`) AS `answer_rate`, AVG(`average_wait_time`) AS `average_wait_time` FROM `daily_calls_provinces` WHERE `code_ostan` = 45 AND `date` >= '1404/05/26' AND `date` <= '1404/05/27';
+---
+[2025-08-18 09:35:59][127.0.0.1] [per-date] /province_metrics.php?province_id=45&start_date=1404%2F05%2F26&end_date=1404%2F05%2F27
+SELECT `id` AS record_id, `date` AS report_date, SUM(`total_number`) AS `total_number`, SUM(`number_resulted_operation`) AS `number_resulted_operation`, SUM(`number_answered`) AS `number_answered`, SUM(`number_unanswerd`) AS `number_unanswerd`, SUM(`number_answered_operator`) AS `number_answered_operator`, SUM(`number_failed`) AS `number_failed`, SUM(`number_busy`) AS `number_busy`, SUM(`other`) AS `other`, SUM(`congestion`) AS `congestion`, SUM(`operator-rendered_services`) AS `operator-rendered_services`, SUM(`comments`) AS `comments`, SUM(`duration_seconds`) AS `duration_seconds`, SUM(`duration_answered_seconds`) AS `duration_answered_seconds`, SUM(`countt_moz`) AS `countt_moz`, SUM(`rightel`) AS `rightel`, SUM(`irancell`) AS `irancell`, SUM(`fixed`) AS `fixed`, SUM(`unknown`) AS `unknown`, SUM(`taliya`) AS `taliya`, SUM(`espadan`) AS `espadan`, SUM(`kish`) AS `kish`, SUM(`mci`) AS `mci`, SUM(`short_calls_less_than_5s`) AS `short_calls_less_than_5s`, SUM(`anonymous_calls`) AS `anonymous_calls`, SUM(`abandoned_calls`) AS `abandoned_calls`, SUM(`total_wait_time`) AS `total_wait_time`, AVG(`call_completion_rate`) AS `call_completion_rate`, AVG(`average_speed_of_answer_asa`) AS `average_speed_of_answer_asa`, AVG(`average_handle_time_aht`) AS `average_handle_time_aht`, AVG(`service_level`) AS `service_level`, AVG(`call_abandonment_rate`) AS `call_abandonment_rate`, AVG(`answer_rate`) AS `answer_rate`, AVG(`average_wait_time`) AS `average_wait_time` FROM `daily_calls_provinces` WHERE `code_ostan` = 45 AND `date` >= '1404/05/26' AND `date` <= '1404/05/27' GROUP BY `id`, `date` ORDER BY `date` ASC;
+---

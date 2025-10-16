@@ -1,0 +1,12 @@
+{
+    "name": "mehdi/112api",
+    "authors": [
+        {
+            "name": "mehdi gandomi",
+            "email": "coderguy1999@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^5.1"
+    }
+}

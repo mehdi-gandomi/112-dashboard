@@ -1,0 +1,209 @@
+{
+  "dashboard": {
+    "title": "داشبورد تحلیلی 112",
+    "subtitle": "رصد و پایش لحظه‌ای از داده‌های  ۳۱ استان",
+    "loading": "در حال بارگذاری داده‌های داشبورد...",
+    "error": "خطا در دریافت داده‌ها",
+    "retry": "تلاش مجدد",
+    "update": "به‌روزرسانی",
+    "updating": "در حال به‌روزرسانی...",
+    "lastUpdate": "آخرین به‌روزرسانی",
+    "autoRefresh": "به‌روزرسانی خودکار هر",
+    "seconds": "ثانیه",
+    "province": "استان",
+    "allProvinces": "همه استان‌ها",
+    "dateRange": "بازه",
+    "from": "از",
+    "to": "تا"
+  },
+  "metrics": {
+    "totalCalls": "کل تماس‌ها",
+    "answeredCalls": "تماس‌های پاسخ داده شده",
+    "abandonedCalls": "تماس‌های قطع شده",
+    "averageHandleTime": "میانگین زمان رسیدگی",
+    "serviceLevel": "سطح خدمات",
+    "firstCallResolution": "حل در اولین تماس",
+    "shortCalls": "تماس‌های کوتاه",
+    "busyCalls": "تماس‌های اشغال",
+    "uniqueCallers": "تماس‌گیرندگان منحصر به فرد",
+    "answerRate": "نرخ پاسخ‌دهی",
+    "abandonmentRate": "نرخ رهاسازی",
+    "averageWaitTime": "میانگین انتظار",
+    "shortCallRate": "نرخ تماس‌های کوتاه",
+    "serviceLevelStandard": "استاندارد بالای 80%",
+    "qualityOfService": "کیفیت خدمات",
+    "needsOptimization": "نیاز به بهینه‌سازی",
+    "comparedToPrevious": "نسبت به دوره قبل"
+  },
+  "provinceCard": {
+    "totalSummary": "مجموع کل استان‌ها",
+    "summary": "خلاصه کلی",
+    "details": "جزئیات",
+    "mainMetrics": {
+      "totalCalls": "کل تماس‌ها",
+      "answeredCalls": "تماس‌های پاسخ داده شده",
+      "abandonedCalls": "تماس‌های قطع شده",
+      "answerRate": "نرخ پاسخ‌دهی"
+    },
+    "detailedMetrics": {
+      "uniqueCallers": "تماس‌گیرندگان منحصر",
+      "noAnswer": "بدون پاسخ",
+      "failed": "ناموفق",
+      "busy": "اشغال",
+      "inQueue": "در صف",
+      "anonymous": "ناشناس"
+    },
+    "timeMetrics": {
+      "averageHandleTime": "میانگین زمان رسیدگی",
+      "averageWaitTime": "میانگین انتظار",
+      "maxWaitTime": "بیشترین انتظار",
+      "totalTalkTime": "کل زمان مکالمه"
+    },
+    "rateMetrics": {
+      "serviceLevel": "سطح خدمات",
+      "firstCallResolution": "حل در اولین تماس",
+      "shortCalls": "تماس‌های کوتاه",
+      "abandonmentRate": "نرخ رهاسازی"
+    }
+  },
+  "operators": {
+    "title": "توزیع اپراتورهای شبکه",
+    "operator": "اپراتور",
+    "calls": "تماس‌ها",
+    "percentage": "درصد",
+    "names": {
+      "mci": "همراه اول",
+      "irancell": "ایرانسل",
+      "rightel": "رایتل",
+      "fixed": "تلفن ثابت",
+      "taliya": "تلیا",
+      "espadan": "اسپادان",
+      "unknown": "بدون سیم کارت"
+    }
+  },
+  "dailyTrend": {
+    "title": "روند روزانه",
+    "date": "تاریخ",
+    "totalCalls": "کل تماس‌ها",
+    "answered": "پاسخ داده شده",
+    "abandoned": "قطع شده",
+    "answerRate": "نرخ پاسخ‌دهی",
+    "aht": "AHT (s)",
+    "averageWait": "میانگین انتظار (s)",
+    "actions": "عملیات"
+  },
+  "provincesChart": {
+    "title": "نمودار مقایسه‌ای استان‌ها",
+    "subtitle": "مقایسه شاخص‌های کلیدی تماس در تمام استان‌ها",
+    "mainChartTitle": "مقایسه کلی شاخص‌ها",
+    "detailedChartTitle": "جزئیات شاخص‌های تماس",
+    "noData": "داده‌ای برای نمایش وجود ندارد",
+    "metrics": {
+      "total_number": "کل تماس‌ها",
+      "number_answered": "پاسخ داده شده",
+      "number_unanswerd": "بدون پاسخ",
+      "number_failed": "ناموفق",
+      "number_busy": "اشغال",
+      "congestion": "ازدحام"
+    },
+    "statistics": {
+      "total": "کل",
+      "average": "میانگین",
+      "maximum": "حداکثر",
+      "minimum": "حداقل"
+    }
+  },
+  "modal": {
+    "title": "جزئیات داده‌ها",
+    "close": "بستن",
+    "loading": "در حال بارگذاری...",
+    "error": "خطا در دریافت جزئیات",
+    "dateSelection": {
+      "label": "انتخاب تاریخ:",
+      "daysAvailable": "روز داده موجود"
+    },
+    "summary": {
+      "title": "خلاصه روز",
+      "totalCalls": "کل تماس‌ها",
+      "answeredCalls": "تماس‌های پاسخ داده شده",
+      "answerRate": "نرخ پاسخ‌دهی",
+      "averageWaitTime": "میانگین زمان انتظار"
+    }
+  },
+  "charts": {
+    "hourlyCallVolume": "حجم تماس‌های ساعتی",
+    "peakHourAnalysis": "تحلیل ساعات اوج",
+    "avgDurationByHour": "میانگین مدت زمان بر اساس ساعت",
+    "totalCalls": "کل تماس‌ها",
+    "answeredCalls": "تماس‌های پاسخ داده شده",
+    "averageDuration": "میانگین مدت زمان",
+    "seconds": "ثانیه",
+    "hour": "ساعت"
+  },
+  "tables": {
+    "handledCallsPerOperator": "تماس‌های رسیدگی شده توسط اپراتور",
+    "averageTalkTimePerOperator": "میانگین زمان مکالمه هر اپراتور",
+    "operatorMissedCallRate": "نرخ تماس‌های از دست رفته اپراتور",
+    "operatorAnswerRate": "نرخ پاسخ‌دهی اپراتور",
+    "dailyCallVolume": "حجم تماس‌های روزانه",
+    "dailyCallTrend": "روند تماس‌های روزانه",
+    "callOriginType": "نوع منشأ تماس",
+    "queueTime": "زمان صف",
+    "zeroBillsecCalls": "تماس‌های صفر ثانیه‌ای",
+    "repeatedCallerAnalysis": "تحلیل تماس‌گیرندگان مکرر",
+    "callDurationDistribution": "توزیع مدت زمان تماس",
+    "abandonedCallAnalysis": "تحلیل تماس‌های قطع شده"
+  },
+  "columns": {
+    "operator": "اپراتور",
+    "handledCalls": "تماس‌های رسیدگی شده",
+    "totalCalls": "کل تماس‌ها",
+    "missedCalls": "تماس‌های از دست رفته",
+    "avgTalkTimeSeconds": "میانگین زمان مکالمه (ثانیه)",
+    "missedCallRatePercentage": "درصد تماس‌های از دست رفته",
+    "answerRatePercentage": "درصد پاسخ‌دهی",
+    "hourNumber": "شماره ساعت",
+    "hourFormatted": "ساعت (فرمت)",
+    "hourReadable": "ساعت (قابل خواندن)",
+    "callCount": "تعداد تماس",
+    "answeredCalls": "تماس‌های پاسخ داده شده",
+    "dayNumber": "شماره روز",
+    "dayName": "نام روز",
+    "date": "تاریخ",
+    "avgDurationSeconds": "میانگین مدت زمان (ثانیه)",
+    "originType": "نوع منشأ",
+    "answeredCount": "تعداد پاسخ داده شده",
+    "averageQueueTimeSeconds": "میانگین زمان صف (ثانیه)",
+    "maxQueueTimeSeconds": "بیشترین زمان صف (ثانیه)",
+    "minQueueTimeSeconds": "کمترین زمان صف (ثانیه)",
+    "totalQueueCalls": "کل تماس‌های صف",
+    "totalCount": "تعداد کل",
+    "answeredWithZeroBillsec": "پاسخ داده شده با صفر ثانیه",
+    "noAnswerZeroBillsec": "بدون پاسخ با صفر ثانیه",
+    "percentage": "درصد",
+    "callerNumber": "شماره تماس‌گیرنده",
+    "firstCall": "اولین تماس",
+    "lastCall": "آخرین تماس",
+    "timeSpanMinutes": "فاصله زمانی (دقیقه)",
+    "repeatedCallerRatePercentage": "درصد تماس‌گیرندگان مکرر",
+    "totalRepeatedCallers": "کل تماس‌گیرندگان مکرر",
+    "uniqueCallersTotal": "کل تماس‌گیرندگان منحصر",
+    "durationRange": "محدوده مدت زمان",
+    "avgDurationInRange": "میانگین مدت زمان در محدوده",
+    "averageAbandonedDurationSeconds": "میانگین مدت زمان قطع شده (ثانیه)",
+    "minAbandonedDurationSeconds": "کمترین مدت زمان قطع شده (ثانیه)",
+    "maxAbandonedDurationSeconds": "بیشترین مدت زمان قطع شده (ثانیه)",
+    "abandonedUnder5s": "قطع شده زیر ۵ ثانیه",
+    "abandoned6_15s": "قطع شده ۶ تا ۱۵ ثانیه",
+    "abandonedOver15s": "قطع شده بالای ۱۵ ثانیه",
+    "totalAbandoned": "کل قطع شده",
+    "breakdownByReason": "تجزیه بر اساس دلیل",
+    "noAnswer": "بدون پاسخ",
+    "busy": "اشغال",
+    "congestion": "ازدحام",
+    "metric": "شاخص",
+    "value": "مقدار",
+    "reason": "دلیل",
+    "count": "تعداد"
+  }
+}

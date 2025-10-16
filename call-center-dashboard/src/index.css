@@ -1,0 +1,33 @@
+@import "tailwindcss";
+.sea path {
+    fill: #4cb2e5 !important;
+  }
+  .iran-map-container{
+    width: 650px;
+  }
+  .iran-map-container svg {
+    width: 100%;
+    height: auto;
+    min-width: 50vw;
+    @media only screen and (min-width: 1280px) {
+      min-width: 400px;
+    }
+  }
+  .iran-map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .iran-map-container svg path {
+    fill: #d3dbe0;
+    transition: fill 0.3s;
+  }
+  
+  
+  .iran-map-container .province-item:hover path{
+    fill: #159d9b ; 
+  }
+  .iran-map-container .province-item:hover text{
+    fill: white !important;
+  }
+  
