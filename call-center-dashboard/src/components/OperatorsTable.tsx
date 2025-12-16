@@ -13,9 +13,9 @@ const OperatorsTable: React.FC<OperatorsTableProps> = ({ summaryData, title = "�
     { name: 'ایرانسل', calls: summaryData?.irancell || 0, color: 'bg-yellow-100' },
     { name: 'رایتل', calls: summaryData?.rightel || 0, color: 'bg-green-100' },
     { name: 'تلفن ثابت', calls: summaryData?.fixed || 0, color: 'bg-purple-100' },
-    { name: 'تلیا', calls: summaryData?.taliya || 0, color: 'bg-pink-100' },
+    { name: 'تالیا', calls: summaryData?.taliya || 0, color: 'bg-pink-100' },
     { name: 'اسپادان', calls: summaryData?.espadan || 0, color: 'bg-indigo-100' },
-    { name: 'بدون سیم کارت', calls: summaryData?.unknown || 0, color: 'bg-gray-100' }
+    { name: 'بدون سیم کارت', calls: summaryData?.other || 0, color: 'bg-gray-100' }
   ];
 
   return (

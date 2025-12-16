@@ -1,3 +1,9 @@
+export interface CallTypeData {
+  type_call: number;
+  type_call_name: string;
+  events_count: number;
+}
+
 export interface ProvinceData {
   province_name?: string;
   province_id?: string;
@@ -15,6 +21,7 @@ export interface ProvinceData {
   irancell?: number; 
   fixed?: number; 
   unknown?: number; 
+  other?: number; 
   taliya?: number; 
   espadan?: number; 
   mci?: number;
@@ -39,6 +46,7 @@ export interface ProvinceData {
   max_wait_time?: number;
   transfer_time?: string;
   transfer_date?: string;
+  call_types?: CallTypeData[];
 }
 
 export interface ProvinceOption {
@@ -73,6 +81,8 @@ export interface ProvinceCardProps {
   onOpenDetails?: (provinceId: string, startDate: string, endDate: string) => void;
   startDate?: any;
   endDate?: any;
+  callTypes?: CallTypeData[];
+  onShowCallTypes?: () => void;
 }
 
 export interface OperatorsTableProps {

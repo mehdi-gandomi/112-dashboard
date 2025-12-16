@@ -128,6 +128,12 @@ try {
         ];
 
         foreach ($records as &$record) {
+            $record['other']=$record['other']+$record['unknown'];
+            $totalComputed=$record['mci']+$record['irancell']+$record['rightel']+$record['fixed']+$record['taliya']+$record['espadan']+$record['other'];
+        if($totalComputed > $record['total_number']){
+            $excess=$totalComputed -$record['total_number'];
+            $record['other']=$record['other']-$excess;
+        }
             // Process JSON columns
             foreach ($jsonColumns as $col) {
                 if (array_key_exists($col, $record) && is_string($record[$col]) && $record[$col] !== '') {
@@ -138,16 +144,33 @@ try {
                         // If JSON decode fails, set to null or empty array
                         $record[$col] = null;
                     }
-                } else {
-                    // If column doesn't exist or is empty, generate sample data
-                    $record[$col] = generateSampleData($col);
-                }
+                } 
+                // else {
+                //     // If column doesn't exist or is empty, generate sample data
+                //     $record[$col] = generateSampleData($col);
+                // }
             }
         }
 
         // Set the first record as currentRecord for the popup
         $firstRecord = $records[0];
         $firstRecord['report_date'] = $firstRecord[DAILY_DATE_COLUMN];
+        
+        // Add province name to the current record
+        $pdo = db();
+        $provinceSql = sprintf(
+            'SELECT %s AS name FROM %s WHERE %s = :province_id LIMIT 1',
+            PROVINCE_NAME_COLUMN,
+            PROVINCES_TABLE,
+        PROVINCE_ID_COLUMN
+        );
+        $provinceStmt = $pdo->prepare($provinceSql);
+        $provinceStmt->execute([':province_id' => (int)$provinceId]);
+        $provinceRow = $provinceStmt->fetch();
+        
+        if ($provinceRow) {
+            $firstRecord['province_name'] = $provinceRow['name'];
+        }
 
         respondJson([
             'province_id' => (int)$provinceId,

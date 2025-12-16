@@ -10,7 +10,7 @@ interface ProvincesMetricsChartProps {
 
 const ProvincesMetricsChart: React.FC<ProvincesMetricsChartProps> = ({ 
   provincesData, 
-  selectedMetrics = ['total_number', 'number_answered', 'number_unanswerd', 'number_failed', 'number_busy', 'congestion']
+  selectedMetrics = ['total_number', 'number_answered', 'number_unanswerd', 'number_failed', 'number_busy']
 }) => {
   // Prepare data for the chart
   const chartData = provincesData
@@ -21,14 +21,14 @@ const ProvincesMetricsChart: React.FC<ProvincesMetricsChartProps> = ({
       number_answered: Number(province.number_answered || 0),
       number_unanswerd: Number(province.number_unanswerd || 0),
       number_failed: Number(province.number_failed || 0),
-      number_busy: Number(province.number_busy || 0),
-      congestion: Number(province.congestion || 0),
+      number_busy: Number(province.number_busy || 0) + Number(province.congestion || 0),
+      // congestion: Number(province.congestion || 0),
     }))
     .filter(province => {
       // Check if any of the main metrics have data (not 0)
       return province.total_number > 0 || province.number_answered > 0 || 
              province.number_unanswerd > 0 || province.number_failed > 0 || 
-             province.number_busy > 0 || province.congestion > 0;
+             province.number_busy > 0;
     })
     .sort((a, b) => b.total_number - a.total_number); // Sort by total calls descending
 
@@ -49,7 +49,7 @@ const ProvincesMetricsChart: React.FC<ProvincesMetricsChartProps> = ({
     number_unanswerd: translations.provincesChart.metrics.number_unanswerd,
     number_failed: translations.provincesChart.metrics.number_failed,
     number_busy: translations.provincesChart.metrics.number_busy,
-    congestion: translations.provincesChart.metrics.congestion,
+    // congestion: translations.provincesChart.metrics.congestion,
   };
 
   // Custom tooltip
@@ -146,7 +146,7 @@ const ProvincesMetricsChart: React.FC<ProvincesMetricsChartProps> = ({
       </div>
 
       {/* Summary Statistics */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-6">
+      {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-6">
         {selectedMetrics.map(metric => {
           const total = chartData.reduce((sum, item) => sum + Number(item[metric as keyof typeof item] || 0), 0);
           const avg = total / chartData.length;
@@ -175,7 +175,7 @@ const ProvincesMetricsChart: React.FC<ProvincesMetricsChartProps> = ({
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };

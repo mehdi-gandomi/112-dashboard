@@ -33,7 +33,9 @@
     "serviceLevelStandard": "استاندارد بالای 80%",
     "qualityOfService": "کیفیت خدمات",
     "needsOptimization": "نیاز به بهینه‌سازی",
-    "comparedToPrevious": "نسبت به دوره قبل"
+    "comparedToPrevious": "نسبت به دوره قبل",
+    "unansweredCalls":"تماس های پاسخ داده نشده",
+    "failedCalls":"تماس های ناموفق"
   },
   "provinceCard": {
     "totalSummary": "مجموع کل استان‌ها",
@@ -76,7 +78,7 @@
       "irancell": "ایرانسل",
       "rightel": "رایتل",
       "fixed": "تلفن ثابت",
-      "taliya": "تلیا",
+      "taliya": "تالیا",
       "espadan": "اسپادان",
       "unknown": "بدون سیم کارت"
     }

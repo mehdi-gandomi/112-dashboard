@@ -3,7 +3,7 @@
     fill: #4cb2e5 !important;
   }
   .iran-map-container{
-    width: 650px;
+    width: 1000px;
   }
   .iran-map-container svg {
     width: 100%;
@@ -30,4 +30,9 @@
   .iran-map-container .province-item:hover text{
     fill: white !important;
   }
-  
+  .recharts-responsive-container{
+    height:400px !important;
+  }
+  .recharts-legend-wrapper{
+    top: 336px !important;
+  }

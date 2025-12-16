@@ -9,7 +9,7 @@ export interface ProvinceData {
   fixed?: number | string;
   taliya?: number | string;
   espadan?: number | string;
-  unknown?: number | string;
+  other?: number | string;
   total_number?: number | string;
 }
 
@@ -51,15 +51,49 @@ const OperatorsPieChart: React.FC<OperatorsPieChartProps> = ({
       { name: 'ایرانسل', value: N(summaryData?.irancell), color: '#F59E0B' },
       { name: 'رایتل', value: N(summaryData?.rightel), color: '#10B981' },
       { name: 'تلفن ثابت', value: N(summaryData?.fixed), color: '#8B5CF6' },
-      { name: 'تلیا', value: N(summaryData?.taliya), color: '#EC4899' },
+      { name: 'تالیا', value: N(summaryData?.taliya), color: '#EC4899' },
       { name: 'اسپادان', value: N(summaryData?.espadan), color: '#6366F1' },
-      { name: 'بدون سیم کارت', value: N(summaryData?.unknown), color: '#6B7280' },
+      { name: 'بدون سیم کارت', value: N(summaryData?.other), color: '#6B7280' },
     ],
     [summaryData]
   );
 
+  // بررسی و تنظیم مقادیر اگر مجموع بیش از 100 درصد باشد
+  const adjustedRaw = useMemo(() => {
+    const totalProvided = N(summaryData?.total_number);
+    const totalComputed = raw.reduce((s, d) => s + d.value, 0);
+    
+    // اگر مجموع بیش از 100 درصد نیست، نیازی به تنظیم نیست
+    if (totalComputed <= totalProvided || totalProvided === 0) {
+      return raw;
+    }
+    
+    // مقدار اضافی که باید از "بدون سیم کارت" کم شود
+    const excess = totalComputed - totalProvided;
+    
+    // پیدا کردن ایندکس "بدون سیم کارت"
+    const otherIndex = raw.findIndex(item => item.name === 'بدون سیم کارت');
+    
+    // اگر "بدون سیم کارت" وجود نداشت یا مقدار آن کمتر از مقدار اضافی بود
+    if (otherIndex === -1 || raw[otherIndex].value <= excess) {
+      // کاهش نسبی از همه مقادیر
+      const ratio = totalProvided / totalComputed;
+      return raw.map(item => ({
+        ...item,
+        value: Math.max(0, Math.round(item.value * ratio))
+      }));
+    }
+    
+    // کاهش مقدار اضافی از "بدون سیم کارت"
+    return raw.map((item, index) => 
+      index === otherIndex 
+        ? { ...item, value: Math.max(0, item.value - excess) }
+        : item
+    );
+  }, [raw, summaryData?.total_number]);
+
   const totalProvided = N(summaryData?.total_number);
-  const totalComputed = raw.reduce((s, d) => s + d.value, 0);
+  const totalComputed = adjustedRaw.reduce((s, d) => s + d.value, 0);
   // اگر total_number داده نشده بود، از مجموع محاسبه شده استفاده کن
   const TOTAL = totalProvided > 0 ? totalProvided : totalComputed;
 

@@ -173,6 +173,24 @@ try {
     $pdo = db();
 
     if ($provinceId === 0) {
+        $type_calls=[
+            "0"=>"مزاحم",
+            "1"=>"غیراضطراری راهنمایی / اداری",
+            "2"=>"پیگیری حادثه اعلامی",
+            "3"=>"تماس نیمه تمام",
+            "4"=>"حادثه تکراری",
+            "5"=>"اعلام حادثه",
+            "6"=>"راهیابی تماس",
+            "7"=>"دریافت راهنمایی"
+        ];
+        $summary_call_types=[];
+        foreach($type_calls as $key=>$value){
+            $summary_call_types[$key]=[
+                "type_call"=>$key,
+                "type_call_name"=>$value,
+                "events_count"=>0
+            ];
+        }
         // Overall summary across all provinces in range
         $summarySql = sprintf(
             "SELECT\n            %s\n        FROM `%s`\n        WHERE `%s` >= :start_date AND `%s` <= :end_date",
@@ -189,7 +207,13 @@ try {
             ':end_date' => $endDate,
         ]);
         $summary = $summaryStmt->fetch() ?: new stdClass();
-
+        $summary['other']=$summary['other']+$summary['unknown'];
+        $totalComputed=$summary['mci']+$summary['irancell']+$summary['rightel']+$summary['fixed']+$summary['taliya']+$summary['espadan']+$summary['other'];
+        if($totalComputed > $summary['total_number']){
+            $excess=$totalComputed -$summary['total_number'];
+            $summary['other']=$summary['other']-$excess;
+        }
+        
         logQuery($pdo, $summarySql, [':start_date' => $startDate, ':end_date' => $endDate], 'summary-all');
         // Per-province aggregates - Start from provinces table to include all provinces
         $perSql = sprintf(
@@ -236,6 +260,10 @@ try {
         $err = curl_error($curl);
         curl_close($curl);
 
+
+        
+
+
         $operationsData = [];
         $allOperationsCount=0;
         if ($response && !$err) {
@@ -250,14 +278,71 @@ try {
             }
         }
         
+        
+
+        
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+          CURLOPT_URL => "https://raromis.ir/superapp/dmis/call-num",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_POSTFIELDS => json_encode([
+            'api_key' => '0bg37280538e47301mcab9ced900432a22323am',
+            'date_start' => $startDate,
+            'date_end' => $endDate
+          ]),
+          CURLOPT_HTTPHEADER => [
+            "content-type: application/json"
+          ],
+        ]);
+        // ⚠️ فقط برای تست: غیرفعال کردن اعتبارسنجی SSL
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+
+        $callData = [];
+        
+        if ($response && !$err) {
+            $response = json_decode($response, true);
+            if (is_array($response)) {
+                foreach ($response as $item) {
+                    
+                    if (isset($item['province_id'], $item['calls'])) {
+                        $callData[$item['province_id']]=[
+                            'calls'=>[]
+                        ];
+                        foreach($item['calls'] as $call){
+                            $callData[$item['province_id']]['calls'][]=[
+                                'type_call'=>$call['type_call'],
+                                'type_call_name'=>$type_calls[$call['type_call']],
+                                'events_count'=>$call['events_count']
+                            ];
+                        }
+                    }
+                    if(isset($item['calls'])){
+                        foreach($item['calls'] as $call){
+                            $summary_call_types[$call['type_call']]['events_count']+=(int)$call['events_count'];
+                        }
+                    }
+                    
+                }
+            }
+        }
+       
         foreach($rows as &$row){
+            $row['other']=$row['other']+$row['unknown'];
             if(isset($operationsData[$row['province_id']])){
                 $row['events_count']=$operationsData[$row['province_id']];
 
             }
+            if(isset($callData[$row['province_id']])){
+                $row['call_data']=$callData[$row['province_id']]['calls'];
+            }
         }
         $summary['events_count']=$allOperationsCount;
-        
+
         logQuery($pdo, $perSql, [':start_date' => $startDate, ':end_date' => $endDate], 'per-province');
         respondJson([
             'province_id' => 0,
@@ -265,6 +350,7 @@ try {
             'end_date' => $endDate,
             'summary' => $summary,
             'metrics' => $rows,
+            'summary_call_types'=>$summary_call_types
         ]);
     } else {
         // Summary for single province (entire range)
@@ -285,6 +371,7 @@ try {
             ':end_date' => $endDate,
         ]);
         $summary = $stmt->fetch() ?: new stdClass();
+        
         logQuery($pdo, $summarySql, [
             ':province_id' => $provinceId,
             ':start_date'  => $startDate,

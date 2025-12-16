@@ -38,18 +38,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
           <Icon className={`h-6 w-6 ${iconText}`} />
         </div>
       </div>
-      {trend !== undefined && (
-        <div className="mt-4 flex items-center justify-end">
-          {trend > 0 ? (
-            <TrendingUp className="h-4 w-4 text-green-500 ml-1" />
-          ) : (
-            <TrendingDown className="h-4 w-4 text-red-500 ml-1" />
-          )}
-          <span className={`text-sm ${trend > 0 ? 'text-green-600' : 'text-red-600'}`}>
-            {Math.abs(trend)}% نسبت به دوره قبل
-          </span>
-        </div>
-      )}
+    
     </div>
   );
 };

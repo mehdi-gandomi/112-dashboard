@@ -10,11 +10,12 @@ import MetricCard from './components/MetricCard';
 import ProvinceCard from './components/ProvinceCard';
 import OperatorsTable from './components/OperatorsTable';
 import DetailsModal from './components/DetailsModal';
+import CallTypesModal from './components/CallTypesModal';
 import IranMapDashboard from './components/IranMapDashboard';
 import ProvincesMetricsChart from './components/ProvincesMetricsChart';
 import BackToTopButton from './components/BackToTopButton';
 // Types
-import { ProvinceData, ProvinceOption, DailyMetrics } from './types';
+import { ProvinceData, ProvinceOption, DailyMetrics, CallTypeData } from './types';
 
 // Utilities
 import { 
@@ -28,6 +29,16 @@ import {
 
 // Translations
 import translations from './translations/fa.json';
+
+// Metric labels for statistics
+const metricLabels = {
+  total_number: translations.metrics.totalCalls,
+  number_answered: translations.metrics.answeredCalls,
+  number_unanswerd: translations.metrics.unansweredCalls,
+  number_failed: translations.metrics.failedCalls,
+  number_busy: translations.metrics.busyCalls,
+  congestion: translations.metrics.congestion
+};
 
 const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: string; onLogout?: () => void }) => {
   const [selectedProvinceId, setSelectedProvinceId] = useState<string>('all');
@@ -53,6 +64,9 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
   const userMenuRef = useRef<HTMLDivElement | null>(null);
   const [isProfileOpen, setIsProfileOpen] = useState<boolean>(false);
   const [exportLoading, setExportLoading] = useState(false);
+  const [callTypesModalOpen, setCallTypesModalOpen] = useState(false);
+  const [callTypesData, setCallTypesData] = useState<CallTypeData[]>([]);
+  const [selectedProvinceCallTypes, setSelectedProvinceCallTypes] = useState<CallTypeData[]|undefined>([]);
   
   const apiUrl: string = ((import.meta as any)?.env?.VITE_BASE_API_URL as string) || 'https://112.rcs.ir/api';
 
@@ -200,11 +214,21 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
         const data = await res.json();
         const summary = (data?.summary || {}) as any;
         const metricsArr = Array.isArray(data?.metrics) ? data.metrics : [];
+        
+        // Store call types data if available
+        if (Array.isArray(data?.summary_call_types)) {
+          setCallTypesData(data.summary_call_types);
+        } else {
+          setCallTypesData([]);
+        }
+        
         const provincesData = metricsArr.map((row: any) => ({
           province_name: row.province_name ?? String(row.province_id ?? ''),
           transfer_time: row.transfer_time,
           transfer_date: row.transfer_date,
           province_id: row.province_id,
+
+          call_types: Array.isArray(row.call_data) ? row.call_data : [],
           total_number: row.total_number || 0,
           number_answered: row.number_answered || 0,
           number_answered_operator: row.number_answered_operator || 0,
@@ -246,6 +270,7 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
           irancell: summary.irancell || 0,
           fixed: summary.fixed || 0,
           unknown: summary.unknown || 0,
+          other: summary.other || 0,
           taliya: summary.taliya || 0,
           espadan: summary.espadan || 0,
           mci: summary.mci || 0,
@@ -558,8 +583,17 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
                 onOpenDetails={openDailyRecordDetails}
                 startDate={startDate}
                 endDate={endDate}
+                callTypes={callTypesData}
+                onShowCallTypes={() => setCallTypesModalOpen(true)}
               />
             )}
+            
+            {/* Call Types Modal */}
+            <CallTypesModal 
+              isOpen={callTypesModalOpen}
+              onClose={() => setCallTypesModalOpen(false)}
+              callTypes={selectedProvinceCallTypes.length > 0 ? selectedProvinceCallTypes : callTypesData}
+            />
             
             
 
@@ -567,82 +601,78 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
             {selectedProvinceId == 'all' && (
               <ProvincesMetricsChart 
               provincesData={allProvincesData}
-              selectedMetrics={['total_number', 'number_answered', 'number_unanswerd', 'number_failed', 'number_busy', 'congestion']}
+              selectedMetrics={['total_number', 'number_answered', 'number_unanswerd', 'number_failed', 'number_busy']}
             />
             )}
 
             {/* Iran Map Dashboard (only when all provinces selected) */}
-            <div className="mb-8 flex">
-              <IranMapDashboard 
-                provincesData={allProvincesData}
-                provincesOptions={provincesOptions}
-                onSelectProvinceById={handleSelectProvinceById}
-              />
-              <div className="w-full">
-                {/* Key Metrics */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8">
-              {/* <MetricCard
-                title={translations.metrics.totalCalls}
-                value={summaryData?.total_number?.toLocaleString() || '0'}
-                subValue={`${summaryData?.unique_callers?.toLocaleString() || '0'} ${translations.metrics.uniqueCallers}`}
-                icon={Phone}
-                trend={5.2}
-                color="blue"
-              />
-              <MetricCard
-                title={translations.metrics.answeredCalls}
-                value={summaryData?.number_answered?.toLocaleString() || '0'}
-                subValue={`${safeToFixed(summaryData?.answer_rate, 1) || '0'}% ${translations.metrics.answerRate}`}
-                icon={PhoneCall}
-                trend={2.1}
-                color="green"
-              />
-              <MetricCard
-                title={translations.metrics.abandonedCalls}
-                value={summaryData?.abandoned_calls?.toLocaleString() || '0'}
-                subValue={`${safeToFixed(summaryData?.call_abandonment_rate, 1) || '0'}% ${translations.metrics.abandonmentRate}`}
-                icon={PhoneOff}
-                trend={-1.8}
-                color="red"
-              /> */}
-              <MetricCard
-                title={translations.metrics.averageWaitTime}
-                value={`${safeToFixed(summaryData?.average_wait_time, 1) || '0'}ثانیه`}
+            <div className="mb-8 flex flex-col md:flex-row">
+              <div className="md:w-2/3">
+                <IranMapDashboard 
+                  provincesData={allProvincesData}
+                  provincesOptions={provincesOptions}
+                  onSelectProvinceById={handleSelectProvinceById}
+                />
+              </div>
+              <div className="md:w-1/3">
+                {/* Summary Statistics moved from ProvincesMetricsChart */}
+                {selectedProvinceId == 'all' && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-6">
+                    {/* , 'number_busy' */}
+                    {['total_number', 'number_answered', 'number_unanswerd', 'number_failed'].map(metric => {
+                      const total = allProvincesData.reduce((sum, item) => sum + Number(item[metric as keyof typeof item] || 0), 0);
+                      const avg = total / allProvincesData.length;
+                      const max = Math.max(...allProvincesData.map(item => Number(item[metric as keyof typeof item] || 0)));
+                      const min = Math.min(...allProvincesData.map(item => Number(item[metric as keyof typeof item] || 0)));
+                      
+                      return (
+                        <div key={metric} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 text-center w-full">
+                          <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            {metricLabels[metric as keyof typeof metricLabels]}
+                          </h5>
+                          <div className="space-y-1 text-xs">
+                            <div className="text-gray-600 dark:text-gray-400">
+                              {translations.provincesChart.statistics.total}: {total.toLocaleString()}
+                            </div>
+                            <div className="text-gray-600 dark:text-gray-400">
+                              {translations.provincesChart.statistics.average}: {avg.toFixed(0)}
+                            </div>
+                            <div className="text-gray-600 dark:text-gray-400">
+                              {translations.provincesChart.statistics.maximum}: {max.toLocaleString()}
+                            </div>
+                            <div className="text-gray-600 dark:text-gray-400">
+                              {translations.provincesChart.statistics.minimum}: {min.toLocaleString()}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+                       {/* Additional Metrics */}
+                <div className="grid grid-cols-1 mt-4 md:grid-cols-1 lg:grid-cols-1 gap-6 mb-8">
+                  <MetricCard
+                    title={translations.metrics.averageWaitTime}
+                    value={`${safeToFixed(summaryData?.average_wait_time, 1) || '0'}ثانیه`}
+                    
+                    icon={Clock}
+                    trend={-0.5}
+                    color="yellow"
+                  />                  
+                  <MetricCard
+                    title={`${translations.metrics.shortCalls} (زیر 5 ثانیه)`}
+                    value={parseInt(summaryData?.short_calls_less_than_5s).toLocaleString() || '0'}
+                    
+                    icon={Timer}
+                    trend={-2.1}
+                    color="orange"
+                  />
+                  
+                </div>
                 
-                icon={Clock}
-                trend={-0.5}
-                color="yellow"
-              />
-              <MetricCard
-                title={translations.metrics.serviceLevel}
-                value={`${safeToFixed(summaryData?.service_level, 1) || '0'}%`}
-                subValue={translations.metrics.serviceLevelStandard}
-                icon={Activity}
-                trend={3.2}
-                color="purple"
-              />
-            </div>
-
-            {/* Additional Metrics */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mb-8">
               
-              <MetricCard
-                title={translations.metrics.shortCalls}
-                value={summaryData?.short_calls_less_than_5s?.toLocaleString() || '0'}
-                subValue={`${safeToFixed(summaryData?.short_call_rate, 1) || '0'}% از کل`}
-                icon={Timer}
-                trend={-2.1}
-                color="orange"
-              />
-              <MetricCard
-                title={translations.metrics.busyCalls}
-                value={summaryData?.number_busy?.toLocaleString() || '0'}
-                subValue={translations.metrics.needsOptimization}
-                icon={AlertCircle}
-                trend={-1.2}
-                color="gray"
-              />
-            </div>
+
+             
               </div>
             </div>
 
@@ -672,6 +702,10 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
       onOpenDetails={openDailyRecordDetails}
       startDate={startDate}
       endDate={endDate}
+      onShowCallTypes={() => {
+        setSelectedProvinceCallTypes(provinceData.call_types);
+        setCallTypesModalOpen(true);
+      }}
     />
   ))}
              </div>
@@ -692,7 +726,7 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
             {/* Province Metrics Chart */}
             <ProvincesMetricsChart 
               provincesData={allProvincesData}
-              selectedMetrics={['total_number', 'number_answered', 'number_unanswerd', 'number_failed', 'number_busy', 'congestion']}
+              selectedMetrics={['total_number', 'number_answered', 'number_unanswerd', 'number_failed', 'number_busy']}
             />
             
             {/* Key Metrics for Selected Province */}
@@ -736,7 +770,7 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
               <MetricCard
                 title={translations.metrics.serviceLevel}
                 value={`${safeToFixed(summaryData?.service_level, 1) || '0'}%`}
-                subValue={translations.metrics.serviceLevelStandard}
+                
                 icon={Activity}
                 trend={3.2}
                 color="purple"
@@ -744,7 +778,7 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
               <MetricCard
                 title={translations.metrics.firstCallResolution}
                 value={`${safeToFixed(summaryData?.fcr_rate, 1) || '0'}%`}
-                subValue={translations.metrics.qualityOfService}
+                
                 icon={UserCheck}
                 trend={1.5}
                 color="indigo"
@@ -752,7 +786,7 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
               <MetricCard
                 title={translations.metrics.shortCalls}
                 value={summaryData?.short_calls_less_than_5s?.toLocaleString() || '0'}
-                subValue={`${safeToFixed(summaryData?.short_call_rate, 1) || '0'}% از کل`}
+                
                 icon={Timer}
                 trend={-2.1}
                 color="orange"
@@ -760,7 +794,7 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
               <MetricCard
                 title={translations.metrics.busyCalls}
                 value={summaryData?.number_busy?.toLocaleString() || '0'}
-                subValue={translations.metrics.needsOptimization}
+                
                 icon={AlertCircle}
                 trend={-1.2}
                 color="gray"
@@ -824,9 +858,9 @@ const CallCenterDashboard = ({ user, token, onLogout }: { user?: any; token?: st
         )}
 
         {/* Footer */}
-        <div className="mt-8 text-center text-sm text-gray-500">
+        {/* <div className="mt-8 text-center text-sm text-gray-500">
           {translations.dashboard.lastUpdate}: {new Date().toLocaleString('fa-IR')} | {translations.dashboard.autoRefresh} {refreshInterval / 1000} {translations.dashboard.seconds} | {translations.dashboard.province}: {selectedProvinceId === 'all' ? translations.dashboard.allProvinces : (provincesOptions.find(p => String(p.id) === selectedProvinceId)?.name || '')} | {translations.dashboard.dateRange}: {startDate?.format('YYYY/MM/DD')} {translations.dashboard.to} {endDate?.format('YYYY/MM/DD')}
-        </div>
+        </div> */}
       </div>
 
       {/* Details Modal */}

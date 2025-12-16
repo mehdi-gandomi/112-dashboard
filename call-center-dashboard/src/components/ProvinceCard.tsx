@@ -113,11 +113,15 @@ const ProvinceCard: React.FC<ProvinceCardProps> = ({
   provinceId = null,
   onOpenDetails,
   startDate,
-  endDate
+  endDate,
+  callTypes,
+  onShowCallTypes
 }) => {
   // Check if data is loaded (you can adjust this condition based on your data structure)
   const isDataLoaded = provinceData && Object.keys(provinceData).length > 0;
-  
+  // Get call types from either the callTypes prop (for summary) or from provinceData.call_types (for provinces)
+  const cardCallTypes = callTypes || provinceData.call_types;
+  const sumOfCallTypes = cardCallTypes?.length ? cardCallTypes.reduce((acc,callType)=> +callType.events_count + acc,0):0;
   // Helper function to safely format numbers
   const safeToFixed = (value: any, decimals: number = 1): string => {
     const num = Number(value);
@@ -146,16 +150,16 @@ const ProvinceCard: React.FC<ProvinceCardProps> = ({
   let pieAnswered = Number(provinceData.number_answered || 0);
   let pieUnanswered = Number(provinceData.number_unanswerd || 0);
   let pieBusy = Number(provinceData.number_busy || 0);
-  let pieFailed = Number(provinceData.number_failed || 0);
-  let pieCongestion = Number(provinceData.congestion || 0);  
+  let pieFailed = Number(provinceData.number_failed || 0) + Number(provinceData.congestion || 0);
+  // let pieCongestion = Number(provinceData.congestion || 0);  
   // Calculate sum of the 4 main metrics
-  const sumOfFour = pieAnswered + pieUnanswered + pieBusy + pieFailed + pieCongestion;
+  const sumOfFour = pieAnswered + pieUnanswered + pieBusy + pieFailed ;
   
   // Adjust the 4 metrics proportionally to match total_number
   if ( sumOfFour !== totalNumber) {
     const remainder=totalNumber - sumOfFour;
     console.log(remainder   )
-    pieCongestion=pieCongestion + remainder;
+    pieFailed=pieFailed + remainder;
   }
   
   
@@ -166,7 +170,7 @@ const ProvinceCard: React.FC<ProvinceCardProps> = ({
     { key: 'unanswered', labelFa: 'بدون پاسخ', value: Math.max(0, pieUnanswered) },
     { key: 'busy', labelFa: 'اشغال', value: Math.max(0, pieBusy) },
     { key: 'failed', labelFa: 'ناموفق', value: Math.max(0, pieFailed) },
-    { key: 'congestion', labelFa: 'ازدحام', value: Math.max(0, pieCongestion) },
+    // { key: 'congestion', labelFa: 'ازدحام', value: Math.max(0, pieCongestion) },
   ] as Array<{ key: string; labelFa: string; value: number }>;
 
   const pieColors: Record<string, string> = {
@@ -237,7 +241,7 @@ const ProvinceCard: React.FC<ProvinceCardProps> = ({
           {!isFirst && provinceId && onOpenDetails && (
             <button
               onClick={handleOpenDetails}
-              className="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition-colors"
+              className="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition-colors cursor-pointer"
             >
               جزئیات
             </button>
@@ -304,6 +308,7 @@ const ProvinceCard: React.FC<ProvinceCardProps> = ({
             </div>
           </div>
           <p className="text-xs text-gray-400">Total call lead to operation</p>
+       
         </div>
         <div className="text-center bg-green-50 p-4 rounded-lg">
           <div className="text-2xl font-bold text-green-600" dir="ltr">
@@ -312,7 +317,7 @@ const ProvinceCard: React.FC<ProvinceCardProps> = ({
           <div className="relative group inline-block cursor-help">
             <p className="text-sm text-gray-600">تماس‌های پاسخ داده شده</p>
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max max-w-[14rem] rounded bg-gray-900 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-lg z-10">
-              تعداد تماس‌هایی که توسط اپراتورها پاسخ داده شده
+              تعداد کل تماس‌های پاسخ‌داده‌شده (اعم از تماس‌هایی که به داخلی متصل شده‌اند یا برای آن‌ها منو پخش شده است و خودامدادی)
             </div>
           </div>
           <p className="text-xs text-gray-400">Answered Calls</p>
@@ -339,7 +344,7 @@ const ProvinceCard: React.FC<ProvinceCardProps> = ({
           <div className="relative group inline-block cursor-help">
             <p className="text-sm text-gray-600">تماس‌های پاسخ داده نشده</p>
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max max-w-[14rem] rounded bg-gray-900 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-lg z-10">
-              تعداد تماس‌هایی که پاسخ داده نشده‌اند
+              تعداد تماس‌های پاسخ‌داده‌نشده (تماس‌هایی که در صف مانده و متصل نشده‌اند)
             </div>
           </div>
           <p className="text-xs text-gray-400">Unanswered Calls</p>
@@ -359,7 +364,7 @@ const ProvinceCard: React.FC<ProvinceCardProps> = ({
         
         <div className="text-center bg-red-50 p-4 rounded-lg">
           <div className="text-2xl font-bold text-red-600" dir="ltr">
-            <AnimatedNumber value={pieFailed+pieCongestion} delay={600} />
+            <AnimatedNumber value={pieFailed} delay={600} />
           </div>
           <div className="relative group inline-block cursor-help">
             <p className="text-sm text-gray-600">تماس‌های ناموفق</p>
@@ -368,6 +373,26 @@ const ProvinceCard: React.FC<ProvinceCardProps> = ({
             </div>
           </div>
           <p className="text-xs text-gray-400">Failed Calls</p>
+        </div>
+        <div className="text-center bg-blue-50 p-4 rounded-lg">
+          <div className="text-2xl font-bold text-blue-600" dir="ltr">
+            <AnimatedNumber value={sumOfCallTypes} delay={200} />
+          </div>
+          <div className="relative group inline-block cursor-help">
+            <p className="text-sm text-gray-600">تماس های ثبت شده</p>
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 w-max max-w-[14rem] rounded bg-gray-900 text-white text-xs px-2 py-1 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity shadow-lg z-10">
+              کل تعداد تماس‌های ثبت شده در توسط اپراتور در dmis
+            </div>
+          </div>
+          <p className="text-xs text-gray-400">Total call lead to operation</p>
+             {cardCallTypes && cardCallTypes.length > 0 && onShowCallTypes && (
+            <button 
+              onClick={onShowCallTypes}
+              className="mt-2 text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 transition-colors cursor-pointer"
+            >
+              مشاهده انواع تماس
+            </button>
+          )}
         </div>
         {/* <div className="text-center bg-red-50 p-4 rounded-lg">
           <div className="text-2xl font-bold text-red-600" dir="ltr">

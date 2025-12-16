@@ -3,13 +3,13 @@ import type { ProvinceData, ProvinceOption } from '../types';
 import province from "../data/province.json";
 import MapSea from "./mapSea";
 // Metric keys to show
-type MetricKey = 'number_answered' | 'number_unanswerd' | 'congestion' | 'number_busy' | 'number_failed';
+type MetricKey = 'number_answered' | 'number_unanswerd'  | 'number_busy' | 'number_failed';
 
 
 const metricConfig: Record<MetricKey, { labelFa: string; tooltip: string }> = {
   number_answered: { labelFa: 'پاسخ‌داده', tooltip: 'تعداد تماس‌های پاسخ داده شده' },
   number_unanswerd: { labelFa: 'بدون پاسخ', tooltip: 'تعداد تماس‌های بدون پاسخ' },
-  congestion: { labelFa: 'ازدحام', tooltip: 'تعداد تماس‌های متاثر از ازدحام' },
+  // congestion: { labelFa: 'ازدحام', tooltip: 'تعداد تماس‌های متاثر از ازدحام' },
   number_busy: { labelFa: 'اشغال', tooltip: 'تعداد تماس‌های اشغال' },
   number_failed: { labelFa: 'ناموفق', tooltip: 'تعداد تماس‌های ناموفق' },
 };
@@ -56,7 +56,7 @@ const IranMapDashboard: React.FC<IranMapDashboardProps> = ({ provincesData, prov
   };
 
   return (
-    <div className=" p-4">
+    <div className="">
       <div className="iran-map-container" >
         <svg
           height="100%"
@@ -133,15 +133,10 @@ const IranMapDashboard: React.FC<IranMapDashboardProps> = ({ provincesData, prov
             <div className="flex justify-between">
               <span>{metricConfig.number_failed.labelFa}:</span>
               <span className="font-medium" dir="ltr">
-                {tooltipData.provinceData.number_failed?.toLocaleString() || '0'}
+                {(+tooltipData.provinceData.number_failed + +tooltipData.provinceData.congestion)?.toLocaleString() || '0'}
               </span>
             </div>
-            <div className="flex justify-between">
-              <span>{metricConfig.congestion.labelFa}:</span>
-              <span className="font-medium" dir="ltr">
-                {tooltipData.provinceData.congestion?.toLocaleString() || '0'}
-              </span>
-            </div>
+            
             <div className="border-t border-gray-600 pt-1 mt-1">
               <div className="flex justify-between font-bold">
                 <span>کل تماس‌ها:</span>
